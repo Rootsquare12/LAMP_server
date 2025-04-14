@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $row['id']; // 현재 로그인한 사람의 아이디를 세션에 저장한다.
             }// 로그인한 사용자는 자신의 아이디가 담긴 세션을 얻는다.
             else { // 로그인 실패
-                $login_message="Invalid user ID or password.";
+                $login_message="Invalid user ID or password. : {$query}";
             }
         }
         mysqli_close($db_conn);
