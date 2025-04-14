@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
   <body>
     <h1>Search page</h1>
     <form method="GET" action="search.php">
-      <input type="text" name="text" placeholder="Enter title..." /><br />
+      <input type="text" name="title" placeholder="Enter title..." /><br />
       <input type="submit" />
     </form>
     <table>
@@ -61,7 +61,6 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         ?>
       </tbody>
     </table>
-    <p><?php echo $query; ?></p>
     <p><?php echo $error_message; ?></p>
   </body>
 </html>
