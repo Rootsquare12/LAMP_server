@@ -62,10 +62,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         cols="200"
         value="<?php echo $content; ?>"
         required
-      >
-      </textarea>
+      ></textarea>
       <input type="file" name="filename" />
       <input type="submit" value="Upload" />
     </form>
+    <div><?php echo $content; ?></div>
   </body>
 </html>
