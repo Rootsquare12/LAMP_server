@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $title=mysqli_real_escape_string($db_conn,$_POST['title']);
             $content=mysqli_real_escape_string($db_conn,$_POST['content']);
             if($id==0) { // 새 글 쓰기
-                $query="insert into post (title,content,filename) value ({$title},{$content})";
+                $query="insert into post (title,content) value ({$title},{$content})";
             }
             else { // 기존 글 수정
                 $query="update post set title='{$title}',content='{$content}',filename='{$file_name}' where id={$id}";
