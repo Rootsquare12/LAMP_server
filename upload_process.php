@@ -1,7 +1,7 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_url='';
-    if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] !== UPLOAD_ERR_NO_FILE) {// 첨부한 파일이 있다면 이를 업로드하기. 파일을 올리지 않았다면 이 과정을 건너뛴다.
+    if ($_FILES['uploaded_file']['error'] !== UPLOAD_ERR_NO_FILE) {// 첨부한 파일이 있다면 이를 업로드하기. 파일을 올리지 않았다면 이 과정을 건너뛴다.
         $file_name=$_FILES['uploaded_file']['name']; // 파일 이름
         $file_tmp=$_FILES['uploaded_file']['tmp_name']; // 파일 임시 이름
         $file_error=$_FILES['uploaded_file']['error']; // 파일 업로드 오류 확인. 0이면 정상이고 그 외는 오류이다.
@@ -12,6 +12,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if($file_error==UPLOAD_ERR_OK) { // 파일이 정상적으로 받아진 경우
             if(move_uploaded_file($file_tmp,$file_path)) {
                 $file_url='/uploads/' . basename($file_name); // 파일 경로에서 앞부분은 떼고 저장하기
+            }
+            else { // 파일이 서버에 저장되지 않았을 때
+                echo "Error in storing file into server.";
+                die();
             }
         }
         else { // 파일 업로드 중 오류 발생

@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
     <h1>Search page</h1>
     <form method="GET" action="search.php">
       <input type="text" name="title" placeholder="Enter title..." /><br />
-      <input type="submit" />
+      <input type="submit" value=Search />
     </form>
     <table>
       <thead>

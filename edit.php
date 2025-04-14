@@ -68,6 +68,5 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
       <input type="hidden" name="id" value="<?php echo $id; ?>"/>
       <input type="submit" value="Upload" />
     </form>
-    <div><?php echo $content; ?></div>
   </body>
 </html>
