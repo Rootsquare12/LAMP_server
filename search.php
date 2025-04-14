@@ -14,14 +14,12 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         $result=false; // 검색 결과에는 빈 값을 할당한다.
     }
     else { // 글 검색하기
-        
-        if(!isset($_GET['title'])) { 
+        if(isset($_GET['title'])) { 
             $text=$_GET['title']; // 제목 검색
             $text=mysqli_real_escape_string($db_conn, $text); // 여기서는 사용자 입력을 이스케이프 처리(문자 본래의 기능을 무시하고 다른 기능을 하게 함) 한다.
             $query="select * from post where title like '%{$text}%'"; // 사용자 입력을 쿼리에 넣는다.
         }
         else {// 쿼리스트링이 없을 경우 모든 글을 검색한다.
-            $error_message="Ding";
             $query="select * from post";
         }
         $result=mysqli_query($db_conn,$query); // 쿼리 실행하기
