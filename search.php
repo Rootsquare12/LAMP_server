@@ -1,6 +1,12 @@
 <?php
 $error_message="";
 $result=false;
+session_start(); // 세션 시작하기
+if (!isset($_SESSION['user_id'])) {
+    // 로그인한 사용자가 아니면 로그인 창으로 이동한다.
+    header("Location: login.php");
+    die(); // 이 스크립트 이후의 것은 무시하고 즉시 종료하기
+}
 if($_SERVER["REQUEST_METHOD"] == "GET") {
     $db_conn=mysqli_connect("127.0.0.1","clerk","clerk_password","posts"); // 데이터베이스에 연결하기
     if($db_conn==false) { // MySQL 연결 중 오류 발생

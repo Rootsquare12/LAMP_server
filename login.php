@@ -1,6 +1,11 @@
 <?php
 session_start(); // 세션 시작하기
 $login_message=""; // 로그인 오류 메시지
+if (isset($_SESSION['user_id'])) {
+    // 로그인한 사용자는 메인 화면으로 이동한다.
+    header("Location: search.php");
+    die(); // 이 스크립트 이후의 것은 무시하고 즉시 종료하기
+}
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $id=$_POST['id']; // 아이디
     $pw=$_POST['pw']; // 비밀번호
@@ -44,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="POST" action="login.php">
       <input type="text" name="id" placeholder="ID" /><br />
       <input type="password" name="pw" placeholder="password" /><br />
-      <input type="submit" />
+      <input type="submit" value="Login"/>
     </form>
     <p><?php echo $login_message; ?></p>
   </body>
