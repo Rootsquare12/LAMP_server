@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $upload_directory = '/var/www/html/uploads/'; // 파일이 저장되는 경로
         $file_path = $upload_directory . basename($file_name);
-        if($file_error==UPLOAD_ERR__OK) { // 파일이 정상적으로 받아진 경우
+        if($file_error==UPLOAD_ERR_OK) { // 파일이 정상적으로 받아진 경우
             if(move_uploaded_file($file_tmp,$file_path)) {
                 $file_url='/uploads/' . basename($file_name); // 파일 경로에서 앞부분은 떼고 저장하기
             }
