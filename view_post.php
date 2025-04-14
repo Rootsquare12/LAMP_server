@@ -43,5 +43,9 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
     <p><?php echo $row['content']; ?></p>
     <h3>Attached files</h3>
     TODO
+    <form action="edit.php" method="GET">
+        <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+        <button type="submit">Edit</button>
+    </form>
   </body>
 </html>

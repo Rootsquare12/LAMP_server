@@ -62,7 +62,10 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
       </tbody>
     </table>
     <p><?php echo $error_message; ?></p>
-    <form action="logout.php" method="post">
+    <form action="edit.php" method="GET">
+        <button type="submit">New Post</button>
+    </form>
+    <form action="logout.php" method="POST">
         <button type="submit">Logout</button>
     </form>
   </body>

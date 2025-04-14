@@ -1,7 +1,7 @@
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $file_url='';
-    if (isset($_FILES['uploaded_file'])) {// 첨부한 파일이 있다면 이를 업로드하기
+    if (isset($_FILES['uploaded_file']) && $_FILES['uploaded_file']['error'] !== UPLOAD_ERR_NO_FILE) {// 첨부한 파일이 있다면 이를 업로드하기. 파일을 올리지 않았다면 이 과정을 건너뛴다.
         $file_name=$_FILES['uploaded_file']['name']; // 파일 이름
         $file_tmp=$_FILES['uploaded_file']['tmp_name']; // 파일 임시 이름
         $file_error=$_FILES['uploaded_file']['error']; // 파일 업로드 오류 확인. 0이면 정상이고 그 외는 오류이다.
@@ -31,10 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             $title=mysqli_real_escape_string($db_conn,$_POST['title']);
             $content=mysqli_real_escape_string($db_conn,$_POST['content']);
             if($id==0) { // 새 글 쓰기
-                $query="insert into post (title,content) value ({$title},{$content})";
+                $query="insert into post (title,content,filename,filepath) value ('{$title}','{$content}','{$file_name}','{$file_url}')";
             }
             else { // 기존 글 수정
-                $query="update post set title='{$title}',content='{$content}',filename='{$file_name}' where id={$id}";
+                $query="update post set title='{$title}',content='{$content}',filename='{$file_name}',filepath='{$file_url}' where id='{$id}'";
             }
             $result=mysqli_query($db_conn,$query); // 쿼리 실행하기
             if($result==false) {// 쿼리 실행 중 오류 발생
