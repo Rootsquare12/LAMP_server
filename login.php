@@ -2,8 +2,8 @@
 session_start(); // 세션 시작하기
 $login_message=""; // 로그인 오류 메시지
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id=$_GET['id']; // 아이디
-    $pw=$_GET['pw']; // 비밀번호
+    $id=$_POST['id']; // 아이디
+    $pw=$_POST['pw']; // 비밀번호
 
     $db_conn=mysqli_connect("127.0.0.1","clerk","clerk_password","login"); // 데이터베이스에 연결하기
     if($db_conn==false) { // MySQL 연결 중 오류 발생
