@@ -61,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
         ?>
       </tbody>
     </table>
+    <p><?php echo $query; ?></p>
     <p><?php echo $error_message; ?></p>
   </body>
 </html>
