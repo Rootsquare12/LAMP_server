@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
             $query="select * from post where title like '%{$text}%'"; // 사용자 입력을 쿼리에 넣는다.
         }
         else {// 쿼리스트링이 없을 경우 모든 글을 검색한다.
+            $error_message="Ding";
             $query="select * from post";
         }
         $result=mysqli_query($db_conn,$query); // 쿼리 실행하기
