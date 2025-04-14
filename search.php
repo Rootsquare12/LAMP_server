@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
             while ($row=mysqli_fetch_array($result)) { // 결과 행을 하나씩 가져온다.
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>"; // 글번호
-                echo "<td><a href='view_post.php?id='{$row['id']}'>{$row['title']}</a></td>"; // 글제목
+                echo "<td><a href='view_post.php?id={$row['id']}'>{$row['title']}</a></td>"; // 글제목. 클릭하면 이동한다.
                 echo "</tr>";
             }
         ?>
