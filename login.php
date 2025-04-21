@@ -51,6 +51,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="password" name="pw" placeholder="password" /><br />
       <input type="submit" value="Login"/>
     </form>
+    <form method="GET" action="signup.php">
+        <button type="submit">Signup</button>
+    </form>
     <p><?php echo $login_message; ?></p>
   </body>
 </html>
