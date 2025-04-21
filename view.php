@@ -42,7 +42,16 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
     <h1><?php echo $row['title']; ?></h1>
     <p><?php echo $row['content']; ?></p>
     <h3>Attached files</h3>
-    TODO
+    <?php 
+    if($row['filename']) {
+        $filename=$row['filename'];
+        $relative_path='/uploads/'.$filename;
+        echo "<a href='".$relative_path."' download='".$filename."'>".$filename."</a>";
+    }
+    else {
+        echo "none";
+    }
+    ?>
     <form action="edit.php" method="GET">
         <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
         <button type="submit">Edit</button>
