@@ -59,6 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
     <?php // 관리자 한정 글을 지울 수 있다.
     if($_SESSION['user_id']=='admin') {
         echo "<form action='delete_process.php' method='POST'>";
+        echo "  <input type='hidden' name='id' value='<?php echo $row['id']; ?>'/>"
         echo "  <button type='submit'>Delete</button>";
         echo "</form>";
     }
