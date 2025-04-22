@@ -62,6 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "GET") {
       </tbody>
     </table>
     <p><?php echo $error_message; ?></p>
+    <p><?php echo $_SESSION['user_id']; ?></p>
     <form action="edit.php" method="GET">
         <button type="submit">New Post</button>
     </form>
